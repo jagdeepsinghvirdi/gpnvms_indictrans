@@ -25,7 +25,7 @@
    "in_list_view": 1,
    "label": "Item Code",
    "options": "Item",
-   "read_only": 1
+   "read_only_depends_on": "eval:parent.type==\"RGP\" || parent.type==\"NRGP\""
   },
   {
    "columns": 2,
@@ -35,7 +35,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Item Name",
-   "read_only": 1,
+   "read_only_depends_on": "eval:parent.type==\"RGP\" || parent.type==\"NRGP\"",
    "reqd": 1
   },
   {
@@ -44,7 +44,7 @@
    "fieldname": "description",
    "fieldtype": "Text Editor",
    "label": "Description",
-   "read_only": 1
+   "read_only_depends_on": "eval:parent.type==\"RGP\" || parent.type==\"NRGP\""
   },
   {
    "fieldname": "column_break_diax",
@@ -55,8 +55,7 @@
    "fieldname": "qty",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Qty",
-   "read_only": 1
+   "label": "Qty"
   },
   {
    "columns": 1,
@@ -66,8 +65,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "UOM",
-   "options": "UOM",
-   "read_only": 1
+   "options": "UOM"
   },
   {
    "columns": 1,

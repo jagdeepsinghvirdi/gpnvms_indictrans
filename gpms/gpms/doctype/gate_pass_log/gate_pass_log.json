@@ -9,6 +9,8 @@
   "gate_pass",
   "log_type",
   "time",
+  "column_break_jpte",
+  "gate_pass_location",
   "items_section",
   "gate_pass_log_item",
   "amended_from"
@@ -61,6 +63,17 @@
    "options": "Gate Pass Log Item"
   },
   {
+   "fieldname": "column_break_jpte",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gate_pass_location",
+   "fieldtype": "Link",
+   "label": "Gate Location",
+   "options": "Gate Pass Location",
+   "reqd": 1
+   },
+   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
@@ -69,7 +82,7 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
-  }
+   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
