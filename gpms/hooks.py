@@ -133,13 +133,13 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
+scheduler_events = {
 # 	"all": [
 # 		"gpms.tasks.all"
 # 	],
-# 	"daily": [
-# 		"gpms.tasks.daily"
-# 	],
+	"daily": [
+		"gpms.gpms.doctype.gate_pass.gate_pass.validate_gate_pass_status"
+	],
 # 	"hourly": [
 # 		"gpms.tasks.hourly"
 # 	],
@@ -149,7 +149,7 @@ app_license = "mit"
 # 	"monthly": [
 # 		"gpms.tasks.monthly"
 # 	],
-# }
+}
 
 # Testing
 # -------
