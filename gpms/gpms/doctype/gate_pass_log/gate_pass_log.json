@@ -9,6 +9,8 @@
   "gate_pass",
   "log_type",
   "time",
+  "column_break_jpte",
+  "gate_pass_location",
   "items_section",
   "gate_pass_log_item"
  ],
@@ -58,11 +60,22 @@
    "fieldtype": "Table",
    "label": "Gate Pass Log Item",
    "options": "Gate Pass Log Item"
+  },
+  {
+   "fieldname": "column_break_jpte",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gate_pass_location",
+   "fieldtype": "Link",
+   "label": "Gate Location",
+   "options": "Gate Pass Location",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-17 10:03:13.342044",
+ "modified": "2024-03-17 12:13:55.756879",
  "modified_by": "Administrator",
  "module": "GPMS",
  "name": "Gate Pass Log",

@@ -74,7 +74,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "GatePass Type",
-   "options": "\nRGP\nNRGP\nVisitor\nConsultant\nContractor\nEmployee",
+   "options": "\nRGP\nNRGP\nVisitor\nConsultant\nContractor\nEmployee\nDocument",
    "reqd": 1
   },
   {
@@ -458,7 +458,7 @@
    "link_fieldname": "gate_pass"
   }
  ],
- "modified": "2024-03-17 11:06:49.771602",
+ "modified": "2024-03-17 12:12:50.375677",
  "modified_by": "Administrator",
  "module": "GPMS",
  "name": "Gate Pass",
