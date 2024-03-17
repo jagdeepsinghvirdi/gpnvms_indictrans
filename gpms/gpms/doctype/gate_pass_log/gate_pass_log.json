@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2024-03-17 08:25:56.303584",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "gate_pass",
+  "log_type",
+  "time",
+  "items_section",
+  "gate_pass_log_item"
+ ],
+ "fields": [
+  {
+   "default": "GPL Naming Rule",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "GPL-\nTEST-GPL-\nGPL Naming Rule",
+   "reqd": 1
+  },
+  {
+   "fieldname": "gate_pass",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Gate Pass",
+   "options": "Gate Pass",
+   "read_only": 1,
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "log_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Log Type",
+   "options": "\nIN\nOUT",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "Now",
+   "fieldname": "time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "gate_pass_log_item",
+   "fieldtype": "Table",
+   "label": "Gate Pass Log Item",
+   "options": "Gate Pass Log Item"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-03-17 10:03:13.342044",
+ "modified_by": "Administrator",
+ "module": "GPMS",
+ "name": "Gate Pass Log",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

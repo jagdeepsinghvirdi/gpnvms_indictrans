@@ -1,0 +1,381 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-03-16 23:06:36.639391",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_details_section",
+  "naming_series",
+  "branch",
+  "gate_pass_location",
+  "type",
+  "purpose",
+  "reference_doctype",
+  "reference_name",
+  "allow_mobile",
+  "allow_laptop",
+  "column_break_gsau",
+  "status",
+  "valid_from",
+  "valid_upto",
+  "remark",
+  "image",
+  "contact_details_section",
+  "contact_person",
+  "first_name",
+  "middle_name",
+  "last_name",
+  "full_name",
+  "mobile_no",
+  "email_id",
+  "column_break_zgtq",
+  "vip",
+  "address",
+  "address_detail",
+  "address_display",
+  "identity_card",
+  "items_section",
+  "fetch_items",
+  "column_break_qzer",
+  "clear_items",
+  "section_break_hyko",
+  "gate_pass_item",
+  "company_reference_tab",
+  "requisite_section",
+  "employee",
+  "employee_name",
+  "employee_designation",
+  "employee_department",
+  "column_break_ssyu",
+  "employee_mobile_no",
+  "employee_email_id",
+  "connections_tab"
+ ],
+ "fields": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "GatePass Type",
+   "options": "\nRGP\nNRGP\nVisitor\nConsultant\nContractor",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_gsau",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nCancelled\nActive\nExpired",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "valid_from",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Valid From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valid_upto",
+   "fieldtype": "Date",
+   "label": "Valid Upto"
+  },
+  {
+   "fieldname": "gate_pass_location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Gate Location",
+   "options": "Gate Pass Location",
+   "reqd": 1
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Reference Doctype",
+   "options": "\nPurchase Order\nSales Order\nDelivery Note\nStock Entry\nCustomer\nSupplier\nContact"
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Reference Name",
+   "options": "reference_doctype"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "GP-\nTEST-GP-\nGP Naming Rule",
+   "reqd": 1
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Image"
+  },
+  {
+   "fieldname": "basic_details_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Details"
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Link",
+   "label": "Purpose",
+   "options": "Gate Pass Purpose",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_details_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Details"
+  },
+  {
+   "fieldname": "column_break_zgtq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "contact_person.address",
+   "fetch_if_empty": 1,
+   "fieldname": "address",
+   "fieldtype": "Link",
+   "label": "Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Link",
+   "label": "Contact Person",
+   "options": "Contact"
+  },
+  {
+   "fetch_from": "contact_person.first_name",
+   "fetch_if_empty": 1,
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  },
+  {
+   "fetch_from": "contact_person.middle_name",
+   "fetch_if_empty": 1,
+   "fieldname": "middle_name",
+   "fieldtype": "Data",
+   "label": "Middle Name"
+  },
+  {
+   "fetch_from": "contact_person.last_name",
+   "fetch_if_empty": 1,
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "address_display",
+   "fieldtype": "Small Text",
+   "label": "Address Display",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "contact_person.mobile_no",
+   "fetch_if_empty": 1,
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "label": "Mobile No",
+   "options": "Phone"
+  },
+  {
+   "fetch_from": "contact_person.email_id",
+   "fetch_if_empty": 1,
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email ID",
+   "options": "Email"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "label": "Remark"
+  },
+  {
+   "fieldname": "requisite_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ssyu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "vip",
+   "fieldtype": "Check",
+   "label": "VIP"
+  },
+  {
+   "fieldname": "identity_card",
+   "fieldtype": "Attach",
+   "label": "Identity Card"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_mobile",
+   "fieldtype": "Check",
+   "label": "Allow Mobile"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_laptop",
+   "fieldtype": "Check",
+   "label": "Allow Laptop"
+  },
+  {
+   "fetch_from": "employee.company_mobile_no",
+   "fieldname": "employee_mobile_no",
+   "fieldtype": "Data",
+   "label": "Employee Mobile No",
+   "options": "Phone",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.company_email",
+   "fieldname": "employee_email_id",
+   "fieldtype": "Data",
+   "label": "Employee Email ID",
+   "options": "Email",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.designation",
+   "fieldname": "employee_designation",
+   "fieldtype": "Link",
+   "label": "Employee Designation",
+   "options": "Designation",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "employee_department",
+   "fieldtype": "Link",
+   "label": "Employee Department",
+   "options": "Department",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_reference_tab",
+   "fieldtype": "Tab Break",
+   "label": "Internal Reference"
+  },
+  {
+   "fieldname": "address_detail",
+   "fieldtype": "Small Text",
+   "label": "Address Detail"
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "gate_pass_item",
+   "fieldtype": "Table",
+   "label": "Gate Pass Item",
+   "options": "Gate Pass Item"
+  },
+  {
+   "fieldname": "connections_tab",
+   "fieldtype": "Tab Break",
+   "label": "Connections",
+   "show_dashboard": 1
+  },
+  {
+   "fieldname": "fetch_items",
+   "fieldtype": "Button",
+   "label": "Fetch Items"
+  },
+  {
+   "fieldname": "column_break_qzer",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "clear_items",
+   "fieldtype": "Button",
+   "label": "Clear Items"
+  },
+  {
+   "fieldname": "section_break_hyko",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "image_field": "image",
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Gate Entry",
+   "link_doctype": "Gate Pass Log",
+   "link_fieldname": "gate_pass"
+  }
+ ],
+ "modified": "2024-03-17 09:40:39.210129",
+ "modified_by": "Administrator",
+ "module": "GPMS",
+ "name": "Gate Pass",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "reference_doctype"
+}

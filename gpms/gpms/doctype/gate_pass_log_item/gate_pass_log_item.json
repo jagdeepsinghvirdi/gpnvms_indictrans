@@ -1,0 +1,103 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-03-17 09:53:28.022862",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "item_name",
+  "description",
+  "column_break_diax",
+  "qty",
+  "uom",
+  "in_qty",
+  "out_qty"
+ ],
+ "fields": [
+  {
+   "columns": 4,
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "fetch_from": "item_code.item_name",
+   "fetch_if_empty": 1,
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item_code.description",
+   "fetch_if_empty": 1,
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_diax",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fetch_from": "item_code.stock_uom",
+   "fetch_if_empty": 1,
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UOM",
+   "options": "UOM",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "depends_on": "eval:parent.log_type==\"IN\"",
+   "fieldname": "in_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "IN Qty",
+   "read_only_depends_on": "eval:parent.log_type==\"OUT\""
+  },
+  {
+   "columns": 1,
+   "depends_on": "eval:parent.log_type==\"OUT\"",
+   "fieldname": "out_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "OUT Qty",
+   "mandatory_depends_on": "eval:parent.log_type==\"OUT\"",
+   "read_only_depends_on": "eval:parent.log_type==\"IN\""
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-03-17 09:58:57.117398",
+ "modified_by": "Administrator",
+ "module": "GPMS",
+ "name": "Gate Pass Log Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
