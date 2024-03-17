@@ -11,6 +11,20 @@
   "time",
   "column_break_jpte",
   "gate_pass_location",
+  "contact_details_section",
+  "contact_person",
+  "first_name",
+  "middle_name",
+  "last_name",
+  "full_name",
+  "mobile_no",
+  "email_id",
+  "column_break_mktl",
+  "vip",
+  "address",
+  "address_display",
+  "address_detail",
+  "identity_card",
   "items_section",
   "gate_pass_log_item"
  ],
@@ -39,7 +53,6 @@
    "in_list_view": 1,
    "label": "Log Type",
    "options": "\nIN\nOUT",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -71,11 +84,96 @@
    "label": "Gate Location",
    "options": "Gate Pass Location",
    "reqd": 1
+  },
+  {
+   "fieldname": "contact_details_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Details"
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Link",
+   "label": "Contact Person",
+   "options": "Contact"
+  },
+  {
+   "fetch_from": "contact_person.first_name",
+   "fetch_if_empty": 1,
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  },
+  {
+   "fetch_from": "contact_person.middle_name",
+   "fetch_if_empty": 1,
+   "fieldname": "middle_name",
+   "fieldtype": "Data",
+   "label": "Middle Name"
+  },
+  {
+   "fetch_from": "contact_person.last_name",
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "contact_person.mobile_no",
+   "fetch_if_empty": 1,
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "label": "Mobile No",
+   "options": "Phone"
+  },
+  {
+   "fetch_from": "contact_person.email_id",
+   "fetch_if_empty": 1,
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email ID",
+   "options": "Email"
+  },
+  {
+   "fieldname": "column_break_mktl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "vip",
+   "fieldtype": "Check",
+   "label": "VIP"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Link",
+   "label": "Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "address_display",
+   "fieldtype": "Small Text",
+   "label": "Address Display",
+   "read_only": 1
+  },
+  {
+   "fieldname": "address_detail",
+   "fieldtype": "Small Text",
+   "label": "Address Detail"
+  },
+  {
+   "fieldname": "identity_card",
+   "fieldtype": "Attach",
+   "label": "Identity Card"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-17 12:13:55.756879",
+ "modified": "2024-03-17 17:03:34.428923",
  "modified_by": "Administrator",
  "module": "GPMS",
  "name": "Gate Pass Log",
