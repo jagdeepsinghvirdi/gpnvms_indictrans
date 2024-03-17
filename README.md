@@ -1,6 +1,6 @@
 ## GPMS
 
-Gate Pass Management System
+Gate Pass Management System - ERPNext
 
 #### License
 
