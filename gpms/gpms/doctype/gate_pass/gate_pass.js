@@ -4,24 +4,6 @@
 frappe.ui.form.on("Gate Pass", {
     refresh: function (frm) {
         frm.trigger("create_log_button");
-        frm.add_custom_button(__("Lead"), function () {
-            frappe.new_doc('Lead', {});
-        }, __("Create"));
-        frm.add_custom_button(__("Customer"), function () {
-            frappe.new_doc('Customer', {});
-        }, __("Create"));
-        frm.add_custom_button(__("Supplier"), function () {
-            frappe.new_doc('Supplier', {});
-        }, __("Create"));
-        frm.add_custom_button(__("Purchase Order"), function () {
-            frappe.new_doc('Purchase Order', {});
-        }, __("Create"));
-        frm.add_custom_button(__("Delivery Note"), function () {
-            frappe.new_doc('Delivery Note', {});
-        }, __("Create"));
-        frm.add_custom_button(__("Stock Entry"), function () {
-            frappe.new_doc('Stock Entry', {"stock_entry_type":"Material Transfer"});
-        }, __("Create"));
     },
     onload: function (frm) {
         frm.trigger("set_valid_date");
