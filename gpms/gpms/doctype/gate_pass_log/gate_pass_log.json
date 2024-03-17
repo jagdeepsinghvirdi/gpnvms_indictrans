@@ -12,7 +12,8 @@
   "column_break_jpte",
   "gate_pass_location",
   "items_section",
-  "gate_pass_log_item"
+  "gate_pass_log_item",
+  "amended_from"
  ],
  "fields": [
   {
@@ -71,11 +72,22 @@
    "label": "Gate Location",
    "options": "Gate Pass Location",
    "reqd": 1
-  }
+   },
+   {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Gate Pass Log",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2024-03-17 12:13:55.756879",
+ "modified": "2024-03-17 14:31:30.049632",
  "modified_by": "Administrator",
  "module": "GPMS",
  "name": "Gate Pass Log",
