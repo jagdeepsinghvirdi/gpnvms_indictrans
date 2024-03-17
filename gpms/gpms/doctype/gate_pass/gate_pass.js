@@ -6,7 +6,12 @@ frappe.ui.form.on("Gate Pass", {
         frm.trigger("create_log_button");
     },
     onload: function (frm) {
-        frm.trigger("set_valid_date");
+        if (in_list(["NRGP", "Visitor"], frm.doc.type)) {
+            if (!frm.doc.valid_upto) {
+                frm.doc.valid_upto = frm.doc.valid_from;
+            }
+            frm.set_df_property('valid_upto', 'read_only', 1);
+        }
         frm.trigger("set_query_filters");
     },
     branch: function (frm) {
@@ -18,10 +23,12 @@ frappe.ui.form.on("Gate Pass", {
     },
     set_valid_date: function (frm) {
         if (in_list(["NRGP", "Visitor"], frm.doc.type)) {
-            if (!frm.doc.valid_upto) {
-                frm.doc.valid_upto = frm.doc.valid_from;
-            }
+            frm.doc.valid_upto = frm.doc.valid_from;
             frm.set_df_property('valid_upto', 'read_only', 1);
+            frm.refresh_field('valid_upto');
+        }
+        else{
+            frm.set_df_property('valid_upto', 'read_only', 0);
         }
     },
     set_query_filters: function (frm) {
@@ -71,6 +78,7 @@ frappe.ui.form.on("Gate Pass", {
                     let gate_pass_log = frappe.model.get_new_doc('Gate Pass Log');
                     gate_pass_log.gate_pass = frm.doc.name,
                     gate_pass_log.log_type = "IN",
+                    gate_pass_log.gate_pass_location = frm.doc.gate_pass_location,
                     frm.doc.gate_pass_item.forEach((item) => {
                         let child_row = frappe.model.add_child(gate_pass_log, "gate_pass_log_item");
                         child_row.item_code = item.item_code;
@@ -88,6 +96,7 @@ frappe.ui.form.on("Gate Pass", {
                     let gate_pass_log = frappe.model.get_new_doc('Gate Pass Log');
                     gate_pass_log.gate_pass = frm.doc.name,
                     gate_pass_log.log_type = "OUT",
+                    gate_pass_log.gate_pass_location = frm.doc.gate_pass_location,
                     frm.doc.gate_pass_item.forEach((item) => {
                         let child_row = frappe.model.add_child(gate_pass_log, "gate_pass_log_item");
                         child_row.item_code = item.item_code;
@@ -101,5 +110,14 @@ frappe.ui.form.on("Gate Pass", {
                 });
             }, __("Actions"));
         }
+    },
+    valid_from:function(frm){
+        frm.trigger("set_valid_date");
+    },
+    reports_to:function(frm){
+        frappe.db.get_value("Employee", {"name": frm.doc.reports_to}, "user_id", (r) => {
+            frm.doc.reports_to_email = r.user_id
+            frm.refresh_field('reports_to_email');
+        });
     }
 });
