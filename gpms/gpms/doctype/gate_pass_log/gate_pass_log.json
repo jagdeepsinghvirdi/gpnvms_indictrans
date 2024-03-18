@@ -26,10 +26,11 @@
   "mobile_no",
   "email_id",
   "column_break_mktl",
-  "vip",
   "address",
   "address_display",
   "address_detail",
+  "column_break_vawk",
+  "vip",
   "identity_card",
   "items_section",
   "gate_pass_log_item",
@@ -170,6 +171,7 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:!doc.address",
    "fieldname": "address_detail",
    "fieldtype": "Small Text",
    "label": "Address Detail"
@@ -223,12 +225,16 @@
   {
    "fieldname": "column_break_wcni",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_vawk",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-18 07:41:51.073335",
+ "modified": "2024-03-18 07:58:54.298907",
  "modified_by": "Administrator",
  "module": "GPMS",
  "name": "Gate Pass Log",

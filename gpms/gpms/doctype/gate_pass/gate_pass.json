@@ -92,6 +92,7 @@
    "in_standard_filter": 1,
    "label": "Status",
    "options": "Pending\nCancelled\nCompleted\nActive\nExpired",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -325,6 +326,7 @@
    "label": "Internal Reference"
   },
   {
+   "depends_on": "eval:!doc.address",
    "fieldname": "address_detail",
    "fieldtype": "Small Text",
    "label": "Address Detail"
@@ -481,7 +483,7 @@
    "link_fieldname": "gate_pass"
   }
  ],
- "modified": "2024-03-18 07:33:52.614697",
+ "modified": "2024-03-18 07:58:06.507767",
  "modified_by": "Administrator",
  "module": "GPMS",
  "name": "Gate Pass",
