@@ -14,6 +14,21 @@ frappe.ui.form.on("Gate Pass", {
         }
         frm.trigger("set_query_filters");
     },
+    address: function(frm) {
+        if (frm.doc.address) {
+            frappe.call({
+                method: 'frappe.contacts.doctype.address.address.get_address_display',
+                args: {
+                    address_dict: frm.doc.address
+                },
+                callback: function(r) {
+                    if (r.message) {
+                        frm.set_value('address_display', r.message);
+                    }
+                }
+            });
+        }
+    },
     branch: function (frm) {
         frm.trigger("set_query_filters");
     },
@@ -73,12 +88,27 @@ frappe.ui.form.on("Gate Pass", {
     },
     create_log_button: function (frm) {
         if (frm.doc.status == "Active") {
-            frm.add_custom_button(__("Create Check-IN"), function () {
+            frm.add_custom_button(__("Check-IN"), function () {
                 frappe.model.with_doctype('Gate Pass Log', () => {
                     let gate_pass_log = frappe.model.get_new_doc('Gate Pass Log');
                     gate_pass_log.gate_pass = frm.doc.name,
                     gate_pass_log.log_type = "IN",
                     gate_pass_log.gate_pass_location = frm.doc.gate_pass_location,
+                    gate_pass_log.company = frm.doc.company,
+                    gate_pass_log.branch = frm.doc.branch,
+                    gate_pass_log.contact_person = frm.doc.contact_person,
+                    gate_pass_log.first_name = frm.doc.first_name,
+                    gate_pass_log.middle_name = frm.doc.middle_name,
+                    gate_pass_log.last_name = frm.doc.last_name,
+                    gate_pass_log.full_name = frm.doc.full_name,
+                    gate_pass_log.mobile_no = frm.doc.mobile_no,
+                    gate_pass_log.email_id = frm.doc.email_id,
+                    gate_pass_log.vip = frm.doc.vip,
+                    gate_pass_log.address = frm.doc.address,
+                    gate_pass_log.address_display = frm.doc.address_display,
+                    gate_pass_log.address_detail = frm.doc.address_detail,
+                    gate_pass_log.identity_card = frm.doc.identity_card,
+                    gate_pass_log.type = frm.doc.type,
                     frm.doc.gate_pass_item.forEach((item) => {
                         let child_row = frappe.model.add_child(gate_pass_log, "gate_pass_log_item");
                         child_row.item_code = item.item_code;
@@ -90,13 +120,28 @@ frappe.ui.form.on("Gate Pass", {
                     });
                     frappe.set_route('Form', 'Gate Pass Log', gate_pass_log.name);
                 });
-            }, __("Actions"));
-            frm.add_custom_button(__("Create Check-OUT"), function () {
+            }, __("Create"));
+            frm.add_custom_button(__("Check-OUT"), function () {
                 frappe.model.with_doctype('Gate Pass Log', () => {
                     let gate_pass_log = frappe.model.get_new_doc('Gate Pass Log');
                     gate_pass_log.gate_pass = frm.doc.name,
                     gate_pass_log.log_type = "OUT",
                     gate_pass_log.gate_pass_location = frm.doc.gate_pass_location,
+                    gate_pass_log.company = frm.doc.company,
+                    gate_pass_log.branch = frm.doc.branch,
+                    gate_pass_log.contact_person = frm.doc.contact_person,
+                    gate_pass_log.first_name = frm.doc.first_name,
+                    gate_pass_log.middle_name = frm.doc.middle_name,
+                    gate_pass_log.last_name = frm.doc.last_name,
+                    gate_pass_log.full_name = frm.doc.full_name,
+                    gate_pass_log.mobile_no = frm.doc.mobile_no,
+                    gate_pass_log.email_id = frm.doc.email_id,
+                    gate_pass_log.vip = frm.doc.vip,
+                    gate_pass_log.address = frm.doc.address,
+                    gate_pass_log.address_display = frm.doc.address_display,
+                    gate_pass_log.address_detail = frm.doc.address_detail,
+                    gate_pass_log.identity_card = frm.doc.identity_card,
+                    gate_pass_log.type = frm.doc.type,
                     frm.doc.gate_pass_item.forEach((item) => {
                         let child_row = frappe.model.add_child(gate_pass_log, "gate_pass_log_item");
                         child_row.item_code = item.item_code;
@@ -108,7 +153,7 @@ frappe.ui.form.on("Gate Pass", {
                     });
                     frappe.set_route('Form', 'Gate Pass Log', gate_pass_log.name);
                 });
-            }, __("Actions"));
+            }, __("Create"));
         }
     },
     valid_from:function(frm){
