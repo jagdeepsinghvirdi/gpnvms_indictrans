@@ -61,6 +61,26 @@ frappe.ui.form.on("Gate Pass", {
                 },
             };
         });
+        
+        let valid_doctypes = []
+        if (in_list(["NRGP", "RGP"], frm.doc.type)) {
+            valid_doctypes.push("Purchase Order"," Sales Order","Delivery Note","Stock Entry")
+        }
+        else if (in_list(["Visitor"], frm.doc.type)) {
+            valid_doctypes.push("Customer","Supplier","Lead")
+        }
+        else if (in_list(["Consultant"], frm.doc.type)) {
+            valid_doctypes.push("Supplier")
+        } 
+        if (valid_doctypes){
+            frm.set_query("reference_doctype", function (doc) {
+                return {
+                    filters: {
+                        name: ['in', valid_doctypes]
+                    },
+                };
+            });
+        }
     },
     clear_items: function (frm) {
         frm.clear_table('gate_pass_item');
@@ -164,5 +184,27 @@ frappe.ui.form.on("Gate Pass", {
             frm.doc.reports_to_email = r.user_id
             frm.refresh_field('reports_to_email');
         });
+    },
+    reference_name:function(frm){
+        if(frm.doc.reference_doctype && frm.doc.reference_name){
+            frappe.call({
+                method: "gpms.gpms.doctype.gate_pass.gate_pass.get_contact_address",
+                args: {
+                    doc: frm.doc,
+                    reference_doctype: frm.doc.reference_doctype,
+                    reference_name: frm.doc.reference_name
+                },
+                callback: function(r) {
+                    if(r.message) {
+                        frm.doc.address = r.message[0];
+                        frm.doc.contact_person = r.message[1]
+                        frm.refresh_field('address');
+                        frm.refresh_field('contact_person');
+                        frm.trigger("address");
+                        frm.save();
+                    }
+                }
+            });
+        }
     }
 });
