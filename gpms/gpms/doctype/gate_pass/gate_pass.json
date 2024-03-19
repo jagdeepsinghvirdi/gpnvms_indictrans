@@ -483,7 +483,7 @@
    "link_fieldname": "gate_pass"
   }
  ],
- "modified": "2024-03-18 07:58:06.507767",
+ "modified": "2024-03-18 11:44:58.090521",
  "modified_by": "Administrator",
  "module": "GPMS",
  "name": "Gate Pass",
@@ -506,5 +506,5 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "reference_doctype"
+ "title_field": "purpose"
 }
