@@ -208,3 +208,25 @@ frappe.ui.form.on("Gate Pass", {
         }
     }
 });
+frappe.ui.form.on('Gate Pass', {
+    refresh: function(frm) {
+        const buttons = {
+            'Purchase Order': 'Purchase Order',
+            'Delivery Note': 'Delivery Note',
+            'Stock Entry': 'Stock Entry',
+            'Sales Order': 'Sales Order',
+            'Customer': 'Customer',
+            'Supplier': 'Supplier',
+            'Lead': 'Lead',
+            'Employee': 'Employee'
+        };
+
+        for (const [doctype, label] of Object.entries(buttons)) {
+            if (frm.doc.reference_doctype === doctype) {
+                frm.add_custom_button(frm.doc.reference_name, () => {
+                    frappe.set_route('List', doctype, {'name': frm.doc.reference_name});
+                });
+            }
+        }
+    },
+});
