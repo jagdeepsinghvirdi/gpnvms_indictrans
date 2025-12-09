@@ -23,7 +23,7 @@
    "fieldname": "gate_pass_type",
    "fieldtype": "Select",
    "label": "GatePass Type",
-   "options": "\nRGP\nNRGP\nVisitor\nConsultant\nContractor"
+   "options": "\nRGP\nNRGP\nVisitor\nConsultant\nContractor\nEmployee"
   }
  ],
  "index_web_pages_for_search": 1,
